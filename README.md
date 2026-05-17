@@ -51,5 +51,10 @@ This lab is graded on a complete/incomplete basis. You will receive 20 points fo
 
 Reflection Questions
 Why is it important to whitelist IP addresses in a real-world production environment? What are the risks of allowing connections from anywhere (0.0.0.0/0)?
+- It is important to only allow connections to the database from specific IP addresses that you want to be able to connect. This is part of the principle of least privelege. By allowing connections from anywhere with the 0.0.0.0/0 default route there is no security in place to prevent unauthorized connections to the database.
+
 What is the purpose of the dotenv package? What other methods could you use to manage environment variables in a production environment (e.g., in a cloud hosting service)?
+- The dotenv package loads environment variables from a .env file into process.env during development. This keeps sensitive data like API keys and database passwords out of your source code. AWS Secrets Manager / Systems Manager Parameter Store: Securely stores encrypted configuration data. Google Cloud Secret Manager: Manages, audits, and accesses secrets as blobs or text strings.Azure Key Vault: Safeguards cryptographic keys and secrets used by cloud apps.
+
 If your application failed to connect, what are the first few steps you would take to debug the issue?
+- I would double-check that my connection string was entered correctly into the .env file due to typos or other formatting issues (such as extra spaces or special characters that haven't been escaped). Then I would troubleshoot any error codes and messages that are returned by error handling routines or console.logs and developer tools.
