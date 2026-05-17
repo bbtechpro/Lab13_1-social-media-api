@@ -41,6 +41,9 @@ Define a port (e.g., 3001).
 Use the MongoClient to connect to the database using the URI from your environment variables.
 Create a single GET route at / that, upon a successful database connection, sends back a JSON response: { message: "Successfully connected to the database!" }. If the connection fails, it should send a 500 status code with a message: { message: "Failed to connect to the database." }.
 Start the server.
+
+[](Database_Connection_Test.jpg)
+
 Submission Instructions
 Ensure your server.js file correctly connects to the database and your connection string is properly secured in the .env file.
 Verify that your server runs without errors using node server.js.
