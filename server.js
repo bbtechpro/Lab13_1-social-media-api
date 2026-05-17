@@ -5,6 +5,7 @@ require('dotenv').config();
 const { MongoClient } = require('mongodb');
 const PORT = process.env.PORT || 3000;
 
+
 // MIDDLEWARE
 
 // DATABASE CONNECTION
