@@ -1,23 +1,37 @@
 // DEPENDENCIES
-const express = require('express');
+const express = require("express");
 const app = express();
-require('dotenv').config();
-const { MongoClient } = require('mongodb');
-const PORT = process.env.PORT || 3000;
+require("dotenv").config();
+const { MongoClient } = require("mongodb");
 
+// Local Environmental Variables
+const PORT = process.env.PORT || 1738;
+const uri = process.env.MONGO_URI;
 
 // MIDDLEWARE
-
-// DATABASE CONNECTION
-
-
+const client = new MongoClient(uri)
 
 // ROUTES
-app.get('/', (req, res) => {
-  res.send('Welcome to the Social Media API!');
+app.get("/", (req, res)=>{
+    res.send("Server's up and running...")
 });
 
-// PORT: START SERVER
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+async function mongoDbConnection() {
+
+    try{
+        await client.connect();
+        console.log ("Database Connection Has Been Made!")
+
+        const db = client.db("test");
+        console.log(`Connected to the ${db.databaseName} database`)
+    }catch(error){
+        console.error('MongoDB connection error: ', error)
+    }
+
+}
+mongoDbConnection();
+
+// PORT
+app.listen(PORT, ()=>{
+    console.log(`Server running on: http://localhost:${PORT}`)
+})
